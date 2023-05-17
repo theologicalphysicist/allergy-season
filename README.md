@@ -17,4 +17,5 @@ sources:
 
 possible extra downloads:
 - [maven](https://maven.apache.org/install) and [this](https://maven.apache.org/download.cgi)
-- 
+
+[come back to this](https://www.reddit.com/r/djangolearning/comments/v7z8oa/how_to_send_files_from_frontend_to_backend_while/)

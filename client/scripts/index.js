@@ -1,22 +1,20 @@
 const FILE_INPUT = document.getElementById("input");
-console.log(JSON.stringify({fileString: "123"}));
+
 FILE_INPUT.oninput = async (event) => {
     const FILE = FILE_INPUT.files[0];
-    // let data = new FormData();
+    const BLOB = new Blob([FILE]);
+    const FORM_DATA = new FormData();
+    FORM_DATA.append("fileString", BLOB);
 
-    // data.append("json", JSON.stringify({"fileString": "123"}));
-
-    const RES = await fetch("http://localhost:8080/files", {
+    await fetch("http://127.0.0.1:8080/files", {
         method: 'post',
-        body: JSON.stringify({fileString: await FILE.text()}),
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': "application/json, text/plain, */*"
-        },
+        body: FORM_DATA,
         mode: "cors"
+    }).then(async (res) => {
+        console.log(await res.text());
+    }).catch((err) => {
+        console.error(err);
     });
 
-    const DATA = RES.body;
-    console.log(DATA);
-    
+    console.log("DONE");    
 };
